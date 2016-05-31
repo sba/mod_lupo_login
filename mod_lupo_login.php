@@ -30,4 +30,8 @@ if($client){
 	$toylist = ModLupoLoginHelper::getToys($client->adrnr);
 }
 
+//load component parameter
+jimport('joomla.application.component.helper');
+$allow_prolongation = JComponentHelper::getParams('com_lupo')->get('lupo_prolongation_enabled', "0");
+
 require JModuleHelper::getLayoutPath('mod_lupo_login', $params->get('layout', 'default'));

@@ -73,7 +73,9 @@ defined('_JEXEC') or die;
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_ARTNR') ?></th>
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_TOY') ?></th>
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_RETOUR_DATE') ?></th>
+			<?php if( $allow_prolongation ) { ?>
 			<th></th>
+			<?php } ?>
 			</tr>
 		<?php foreach ($toylist as $toy){?>
 			<tr>
@@ -86,6 +88,8 @@ defined('_JEXEC') or die;
 						<i class="uk-icon-exclamation red"></i>
 					<?php } ?>
 				</td>
+				<?php
+				if( $allow_prolongation ) { ?>
 				<td>
 					<?php
 					if($toy->return_extended==0){
@@ -98,6 +102,7 @@ defined('_JEXEC') or die;
 						<i class="uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') ?></i>
 					<?php } ?>
 				</td>
+				<?php } ?>
 			</tr>
 		<?php } ?>
 		</table>
