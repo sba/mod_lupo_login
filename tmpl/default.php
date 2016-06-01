@@ -92,15 +92,21 @@ defined('_JEXEC') or die;
 				if( $allow_prolongation ) { ?>
 				<td>
 					<?php
-					if($toy->return_extended==0){
-						if($toy->prolongable==0) {?>
-							<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
-						<?php } else {?>
-							<button class="uk-button uk-button-mini uk-float-right btn-prolong" data-lupo_id="<?=$toy->lupo_id?>"><?php echo JText::_('MOD_LUPO_LOGIN_PROLONG') ?></button>
-						<?php } ?>
-					<?php } else {?>
-						<i class="uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') ?></i>
-					<?php } ?>
+					if($toy->reminder_sent==1) {?>
+						<i class="uk-float-right uk-text-danger"><?php echo JText::_('MOD_LUPO_LOGIN_REMINDER_SENT') ?></i>
+						<?php
+					} else {
+						if ($toy->return_extended == 0) {
+							if ($toy->prolongable == 0) { ?>
+								<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
+							<?php } else { ?>
+								<button class="uk-button uk-button-mini uk-float-right btn-prolong"
+								        data-lupo_id="<?= $toy->lupo_id ?>"><?php echo JText::_('MOD_LUPO_LOGIN_PROLONG') ?></button>
+							<?php } ?>
+						<?php } else { ?>
+							<i class="uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') ?></i>
+						<?php }
+					}?>
 				</td>
 				<?php } ?>
 			</tr>
