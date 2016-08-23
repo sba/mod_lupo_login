@@ -66,7 +66,7 @@ defined('_JEXEC') or die;
 		</div>
 	<?php } ?>
 
-	<?php if(isset($toylist)){ ?>
+	<?php if(isset($toylist) && count($toylist)>0){ ?>
 		<h3><?php echo JText::_('MOD_LUPO_LOGIN_YOUR_TOYS') ?>:</h3>
 		<table class="uk-table uk-table-striped">
 			<tr>
@@ -112,6 +112,10 @@ defined('_JEXEC') or die;
 			</tr>
 		<?php } ?>
 		</table>
+	<?php }
+
+	if(isset($lupo_login) && $lupo_login && isset($toylist) && count($toylist)==0){ ?>
+		<div class="uk-alert">Sie haben zur Zeit keine Spiele ausgeliehen.</div>
 	<?php } ?>
 
 </div>
