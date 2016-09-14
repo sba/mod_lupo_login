@@ -9,26 +9,26 @@
 
 defined('_JEXEC') or die;
 
-require_once( dirname(__FILE__).'/helper.php' );
+require_once(dirname(__FILE__) . '/helper.php');
 new ModLupoLoginHelper();
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list            = ModLupoLoginHelper::getToys($params);
 
-$jinput = JFactory::getApplication()->input;
+$jinput   = JFactory::getApplication()->input;
 $do_login = $jinput->get('lupo_clientlogin', false);
-if($do_login=='login'){
+if ($do_login == 'login') {
 	$lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false));
 }
-if($do_login=='logout'){
+if ($do_login == 'logout') {
 	ModLupoLoginHelper::clientLogout();
 }
 
 $session = JFactory::getSession();
-$client = $session->get('lupo_client');
+$client  = $session->get('lupo_client');
 
-if($client){
+if ($client) {
 	$module->title = $client->firstname . ' ' . $client->lastname;
-	$toylist = ModLupoLoginHelper::getToys($client->adrnr);
+	$toylist       = ModLupoLoginHelper::getToys($client->adrnr);
 }
 
 //load component parameter
