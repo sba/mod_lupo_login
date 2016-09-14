@@ -3,13 +3,14 @@
  * @package     Joomla.Site
  * @subpackage  mod_lupo_categories
  *
- * @copyright   Copyright (C) databauer / Stefan Bauer 
+ * @copyright   Copyright (C) databauer / Stefan Bauer
  * @license     GNU General Public License version 2 or later
  */
 
 defined('_JEXEC') or die;
 
 require_once( dirname(__FILE__).'/helper.php' );
+new ModLupoLoginHelper();
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list            = ModLupoLoginHelper::getToys($params);
 
