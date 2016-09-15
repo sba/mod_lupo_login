@@ -49,7 +49,7 @@ defined('_JEXEC') or die;
 			if($client) { ?>
 				<input type="hidden" name="lupo_clientlogin" value="logout">
 				<div class="uk-width-2-3"><?php echo JText::_('MOD_LUPO_LOGIN_ABO_VALID_UNTIL') ?><b>: <?php echo date("d.m.Y", strtotime($client->aboenddat))?></b> (<?php echo $client->abotype?>)</div>
-				<div class="uk-width-1-3"><button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?>Abmelden" class="uk-button uk-button-primary uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?></button></div>
+				<div class="uk-width-1-3"><button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?>" class="uk-button uk-button-primary uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?></button></div>
 			<?php } else { ?>
 				<input type="hidden" name="lupo_clientlogin" value="login">
 				<div class="uk-width-1-3"><input type="text" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_ADRNR') ?>" size="10" name="adrnr" class="uk-width-1-1" required></div>
