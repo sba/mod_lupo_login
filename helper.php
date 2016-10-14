@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_lupo_clogin
+ * @subpackage  mod_lupo_login
  *
  * @copyright   Copyright (C) databauer / Stefan Bauer 
  * @license     GNU General Public License version 2 or later
@@ -12,9 +12,6 @@ defined('_JEXEC') or die;
 /**
  * Helper for mod_lupo_login
  *
- * @package     Joomla.Site
- * @subpackage  mod_lupo_login
- * @since       1.0
  */
 class ModLupoLoginHelper
 {
