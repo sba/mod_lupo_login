@@ -1,7 +1,7 @@
 <?php
 /**
  * @package     Joomla.Site
- * @subpackage  mod_lupo_categories
+ * @subpackage  mod_lupo_login
  *
  * @copyright   Copyright (C) databauer / Stefan Bauer
  * @license     GNU General Public License version 2 or later

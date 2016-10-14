@@ -10,10 +10,10 @@
 defined('_JEXEC') or die;
 
 /**
- * Helper for mod_lupo_categories
+ * Helper for mod_lupo_login
  *
  * @package     Joomla.Site
- * @subpackage  mod_lupo_categories
+ * @subpackage  mod_lupo_login
  * @since       1.0
  */
 class ModLupoLoginHelper
