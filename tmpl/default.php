@@ -61,7 +61,7 @@ defined('_JEXEC') or die;
 		</div>
 	</form>
 
-	<?php if(isset($lupo_login) && $lupo_login == false){ ?>
+	<?php if(isset($_GET['loginError'])){ ?>
 		<div data-uk-alert="" class="uk-alert uk-alert-danger">
 			<a class="uk-alert-close uk-close" href=""></a>
 			<p><b><?php echo JText::_('MOD_LUPO_LOGIN_LOGIN_FAILED') ?></b> <?php echo JText::_('MOD_LUPO_LOGIN_LOGIN_USER_OR_PW_WRONG') ?></p>
@@ -116,7 +116,7 @@ defined('_JEXEC') or die;
 		</table>
 	<?php }
 
-	if(isset($lupo_login) && $lupo_login && isset($toylist) && count($toylist)==0){ ?>
+	if(isset($client) && isset($toylist) && count($toylist)==0){ ?>
 		<div class="uk-alert">Sie haben zur Zeit keine Spiele ausgeliehen.</div>
 	<?php } ?>
 

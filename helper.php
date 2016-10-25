@@ -32,10 +32,10 @@ class ModLupoLoginHelper
 	public static function clientLogin($adrnr, $password)
 	{
 		$model = new LupoModelLupoClient();
-		$model->clientLogin($adrnr, $password);
+		$clientLogin = $model->clientLogin($adrnr, $password);
 
 		$app = JFactory::getApplication();
-		$app->redirect(JURI::current());
+		$app->redirect(JURI::current().($clientLogin?'':'?loginError'));
 	}
 
 	/**
