@@ -17,7 +17,7 @@ $list            = ModLupoLoginHelper::getToys($params);
 $jinput   = JFactory::getApplication()->input;
 $do_login = $jinput->get('lupo_clientlogin', false);
 if ($do_login == 'login') {
-	$lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false));
+	$lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false, 'STRING'));
 }
 if ($do_login == 'logout') {
 	ModLupoLoginHelper::clientLogout();
