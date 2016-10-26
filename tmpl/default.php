@@ -103,7 +103,7 @@ defined('_JEXEC') or die;
 								<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
 							<?php } else { ?>
 								<button class="uk-button uk-button-mini uk-float-right btn-prolong"
-								        data-lupo_id="<?= $toy->lupo_id ?>"><?php echo JText::_('MOD_LUPO_LOGIN_PROLONG') ?></button>
+								        data-lupo_id="<?= $toy->lupo_id ?>"><?php echo JText::_('MOD_LUPO_LOGIN_PROLONG') ?> <?php echo ($toy->tax_extended > 0)? ' CHF '.number_format($toy->tax_extended, 2) :''; ?></button>
 							<?php } ?>
 						<?php } else { ?>
 							<i class="uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') ?></i>
