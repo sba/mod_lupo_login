@@ -81,7 +81,7 @@ defined('_JEXEC') or die;
 			</tr>
 		<?php foreach ($toylist as $toy){?>
 			<tr>
-				<td><?=$toy->number?></td>
+				<td><?=str_replace('.0', '', $toy->number) ?></td>
 				<td><a href="<?=$toy->link?>"><?=$toy->title?></a></td>
 				<td class="retour-date">
 					<?=date('d.m.Y', strtotime($toy->return_date))?>
