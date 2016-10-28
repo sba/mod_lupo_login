@@ -3,7 +3,7 @@
  * @package     Joomla.Site
  * @subpackage  mod_lupo_login
  *
- * @copyright   Copyright (C) databauer / Stefan Bauer 
+ * @copyright   Copyright (C) databauer / Stefan Bauer
  * @license     GNU General Public License version 2 or later
  */
 
@@ -42,7 +42,7 @@ defined('_JEXEC') or die;
 	}?>
 
 	<form method="post" action="<?=JURI::current()?>" class="uk-form">
-		<div class="uk-grid uk-form-row">
+		<div class="uk-grid uk-form-row" data-uk-grid-margin>
 			<?php
 			$session = JFactory::getSession();
 			$client = $session->get('lupo_client');
@@ -53,9 +53,9 @@ defined('_JEXEC') or die;
                 <style> .lupo_show_logoff { display: none; } .lupo_show_logon { display: block; } </style>
 			<?php } else { ?>
 				<input type="hidden" name="lupo_clientlogin" value="login">
-				<div class="uk-width-1-3"><input type="text" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_ADRNR') ?>" size="10" name="adrnr" class="uk-width-1-1" required></div>
-				<div class="uk-width-1-3"><input type="password" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_PASSWORD') ?>" size="10" name="password" class="uk-width-1-1" required></div>
-				<div class="uk-width-1-3"><button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?>" class="uk-button uk-button-primary"><?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?></button></div>
+				<div class="uk-width-1-1 uk-width-small-1-3"><input type="text" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_ADRNR') ?>" size="10" name="adrnr" class="uk-width-1-1" required></div>
+				<div class="uk-width-1-1 uk-width-small-1-3"><input type="password" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_PASSWORD') ?>" size="10" name="password" class="uk-width-1-1" required></div>
+				<div class="uk-width-1-1 uk-width-small-1-3"><button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?>" class="uk-button uk-button-primary"><?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?></button></div>
                 <style> .lupo_show_logoff { display: block; } .lupo_show_logon { display: none; } </style>
 			<?php } ?>
 		</div>
