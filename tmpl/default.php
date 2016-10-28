@@ -72,7 +72,7 @@ defined('_JEXEC') or die;
 		<h3><?php echo JText::_('MOD_LUPO_LOGIN_YOUR_TOYS') ?>:</h3>
 		<table class="uk-table uk-table-striped">
 			<tr>
-			<th><?php echo JText::_('MOD_LUPO_LOGIN_ARTNR') ?></th>
+			<th class="uk-hidden-small"><?php echo JText::_('MOD_LUPO_LOGIN_ARTNR') ?></th>
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_TOY') ?></th>
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_RETOUR_DATE') ?></th>
 			<?php if( $allow_prolongation ) { ?>
@@ -81,7 +81,7 @@ defined('_JEXEC') or die;
 			</tr>
 		<?php foreach ($toylist as $toy){?>
 			<tr>
-				<td><?=str_replace('.0', '', $toy->number) ?></td>
+				<td class="uk-hidden-small"><?=str_replace('.0', '', $toy->number) ?></td>
 				<td><a href="<?=$toy->link?>"><?=$toy->title?></a></td>
 				<td class="retour-date">
 					<?=date('d.m.Y', strtotime($toy->return_date))?>
