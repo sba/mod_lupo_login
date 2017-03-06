@@ -5,12 +5,12 @@
 	client="site">
 	<name>mod_lupo_login</name>
 	<author>Stefan Bauer</author>
-	<creationDate>November 2016</creationDate>
+	<creationDate>March 2017</creationDate>
 	<copyright>Copyright (C) databauer gmbh / Stefan Bauer</copyright>
 	<license>License GNU General Public License version 2 or later</license>
 	<authorEmail>stefan@databauer.ch</authorEmail>
 	<authorUrl>http://www.ludothekprogramm.ch</authorUrl>
-	<version>3.2.0</version>
+	<version>3.3.0</version>
 	<description>MOD_LUPO_LOGIN_XML_DESCRIPTION</description>
 
 	<customContent />
