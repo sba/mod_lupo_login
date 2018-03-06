@@ -46,7 +46,9 @@ defined('_JEXEC') or die;
 			<?php
 			$session = JFactory::getSession();
 			$client = $session->get('lupo_client');
-			$hasAbo = $client->aboenddat != "0000-00-00";
+			if(isset($client)) {
+				$hasAbo = $client->aboenddat != "0000-00-00";
+			}
 			if($client) { ?>
 				<input type="hidden" name="lupo_clientlogin" value="logout">
                 <?php if($hasAbo){ ?>
