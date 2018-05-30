@@ -104,7 +104,7 @@ defined('_JEXEC') or die;
 						<?php
 					} else {
 						if ($toy->return_extended == 0) {
-							if ($toy->prolongable == 0) { ?>
+							if ($toy->prolongable == 0 || $toy->next_reservation!=null) { ?>
 								<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
 							<?php } else { ?>
 								<button class="uk-button uk-button-mini uk-float-right btn-prolong"
