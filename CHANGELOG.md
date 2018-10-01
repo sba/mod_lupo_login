@@ -1,6 +1,9 @@
 # Changelog
 
-### 3.7.0 (Mai 29, 2018)
+### 3.8.0 (October 01, 2018)
+  - Version sync
+
+### 3.7.0 (May 29, 2018)
   - do not allow prolongation of reserved games
 
 ### 3.6.0 (March 21, 2018)
