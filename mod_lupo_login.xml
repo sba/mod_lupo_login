@@ -19,7 +19,6 @@
 	<files>
 		<filename module="mod_lupo_login">mod_lupo_login.php</filename>
         <filename>helper.php</filename>
-        <filename>CHANGELOG.md</filename>
 		<folder>tmpl</folder>
 	</files>
 	<languages>
