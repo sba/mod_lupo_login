@@ -15,6 +15,13 @@ $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list            = ModLupoLoginHelper::getToys($params);
 
 $jinput   = JFactory::getApplication()->input;
+
+$loginlink = $jinput->get('ll', false);
+if($loginlink){
+	list ($adrnr, $password) = explode('-', $loginlink, 2);
+	$lupo_login = ModLupoLoginHelper::clientLogin($adrnr, $password);
+}
+
 $do_login = $jinput->get('lupo_clientlogin', false);
 if ($do_login == 'login') {
 	$lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false, 'STRING'));
