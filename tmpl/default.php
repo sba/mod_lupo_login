@@ -104,7 +104,17 @@ defined('_JEXEC') or die;
 						<?php
 					} else {
 						if ($toy->return_extended == 0) {
-							if ($toy->prolongable == 0 || $toy->next_reservation!=null) { ?>
+                            $has_reservation = false;
+						    if ($toy->next_reservation!=null) {
+                                $return_date_extended = new DateTime($toy->return_date_extended);
+                                $next_reservation = new DateTime($toy->next_reservation);
+                                $interval = $return_date_extended->diff($next_reservation);
+                                if ($interval->days <= 14) {
+                                    $has_reservation = true;
+                                }
+                            }
+
+							if ($toy->prolongable == 0 || $has_reservation) { ?>
 								<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
 							<?php } else { ?>
 								<button class="uk-button uk-button-mini uk-float-right btn-prolong"
