@@ -109,7 +109,7 @@ defined('_JEXEC') or die;
                                 $return_date_extended = new DateTime($toy->return_date_extended);
                                 $next_reservation = new DateTime($toy->next_reservation);
                                 $interval = $return_date_extended->diff($next_reservation);
-                                if ($interval->days <= 14) {
+                                if ($interval->days <= 14 || $interval->invert == 1) {
                                     $has_reservation = true;
                                 }
                             }
