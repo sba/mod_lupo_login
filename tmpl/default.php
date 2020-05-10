@@ -81,13 +81,41 @@ defined('_JEXEC') or die;
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_TOY') ?></th>
 			<th><?php echo JText::_('MOD_LUPO_LOGIN_RETOUR_DATE') ?></th>
 			<?php if( $allow_prolongation ) { ?>
-			<th></th>
+			<th class="uk-hidden-small"></th>
 			<?php } ?>
 			</tr>
-		<?php foreach ($toylist as $toy){?>
+		<?php foreach ($toylist as $toy){
+            if($toy->reminder_sent==1) {
+                $html_prolongation = '<i class="uk-text-danger">'. JText::_('MOD_LUPO_LOGIN_REMINDER_SENT') .'</i>';
+            } else {
+                if ($toy->return_extended == 0) {
+                    $has_reservation = false;
+                    if ($toy->next_reservation!=null) {
+                        $return_date_extended = new DateTime($toy->return_date_extended);
+                        $next_reservation = new DateTime($toy->next_reservation);
+                        $interval = $return_date_extended->diff($next_reservation);
+                        if ($interval->days <= 14 || $interval->invert == 1) {
+                            $has_reservation = true;
+                        }
+                    }
+
+                    $extended_date_over = $toy->return_date_extended<=date("Y-m-d");
+
+                    if ($toy->prolongable == 0 || $has_reservation || $extended_date_over ) {
+                        $html_prolongation = '<i class="uk-text-muted">'. JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') .'</i>';
+                    } else {
+                        $html_prolongation = '<button class="uk-button uk-button-mini btn-prolong" data-lupo_id="'. $toy->lupo_id .'">'. JText::_('MOD_LUPO_LOGIN_PROLONG') .' ' . date("d.m.Y", strtotime($toy->return_date_extended)) . (($toy->tax_extended > 0)? ' CHF '.number_format($toy->tax_extended, 2) :''). '</button>';
+                     }
+                 } else {
+                    $html_prolongation = '<i>'. JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') .'</i>';
+                }
+            }?>
 			<tr>
 				<td class="uk-hidden-small"><?=str_replace('.0', '', $toy->number) ?></td>
-				<td><a href="<?=$toy->link?>"><?=$toy->title?></a></td>
+				<td>
+                    <a href="<?=$toy->link?>"><?=$toy->title?></a>
+                    <div class="uk-visible-small"><?php echo $html_prolongation?></div>
+                </td>
 				<td class="retour-date">
 					<?=date('d.m.Y', strtotime($toy->return_date))?>
 					<?php
@@ -97,35 +125,8 @@ defined('_JEXEC') or die;
 				</td>
 				<?php
 				if( $allow_prolongation ) { ?>
-				<td>
-					<?php
-					if($toy->reminder_sent==1) {?>
-						<i class="uk-float-right uk-text-danger"><?php echo JText::_('MOD_LUPO_LOGIN_REMINDER_SENT') ?></i>
-						<?php
-					} else {
-						if ($toy->return_extended == 0) {
-                            $has_reservation = false;
-						    if ($toy->next_reservation!=null) {
-                                $return_date_extended = new DateTime($toy->return_date_extended);
-                                $next_reservation = new DateTime($toy->next_reservation);
-                                $interval = $return_date_extended->diff($next_reservation);
-                                if ($interval->days <= 14 || $interval->invert == 1) {
-                                    $has_reservation = true;
-                                }
-                            }
-
-						    $extended_date_over = $toy->return_date_extended<=date("Y-m-d");
-
-							if ($toy->prolongable == 0 || $has_reservation || $extended_date_over ) { ?>
-								<i class="uk-float-right uk-text-muted"><?php echo JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') ?></i>
-							<?php } else { ?>
-								<button class="uk-button uk-button-mini uk-float-right btn-prolong"
-								        data-lupo_id="<?= $toy->lupo_id ?>"><?php echo JText::_('MOD_LUPO_LOGIN_PROLONG') ?> <?=date("d.m.Y", strtotime($toy->return_date_extended)) ?> <?php echo ($toy->tax_extended > 0)? ' CHF '.number_format($toy->tax_extended, 2) :''; ?></button>
-							<?php } ?>
-						<?php } else { ?>
-							<i class="uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_WAS_PROLONGED') ?></i>
-						<?php }
-					}?>
+				<td class="uk-hidden-small" align="right">
+                    <?php echo $html_prolongation?>
 				</td>
 				<?php } ?>
 			</tr>
