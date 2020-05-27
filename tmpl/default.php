@@ -114,7 +114,10 @@ defined('_JEXEC') or die;
 				<td class="uk-hidden-small"><?=str_replace('.0', '', $toy->number) ?></td>
 				<td>
                     <a href="<?=$toy->link?>"><?=$toy->title?></a>
+                    <?php
+                    if( $allow_prolongation ) { ?>
                     <div class="uk-visible-small"><?php echo $html_prolongation?></div>
+                    <?php } ?>
                 </td>
 				<td class="retour-date">
 					<?=date('d.m.Y', strtotime($toy->return_date))?>
