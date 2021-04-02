@@ -1,10 +1,10 @@
 <?php
 /**
- * @package     Joomla.Site
- * @subpackage  mod_lupo_login
- *
- * @copyright   Copyright (C) databauer / Stefan Bauer 
- * @license     GNU General Public License version 2 or later
+ * @package     LUPO
+ * @copyright   Copyright (C) databauer / Stefan Bauer
+ * @author      Stefan Bauer
+ * @link        https://www.ludothekprogramm.ch
+ * @license     License GNU General Public License version 2 or later
  */
 
 defined('_JEXEC') or die;
