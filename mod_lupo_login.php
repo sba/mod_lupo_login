@@ -14,28 +14,29 @@ new ModLupoLoginHelper();
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list            = ModLupoLoginHelper::getToys($params);
 
-$jinput   = JFactory::getApplication()->input;
+$jinput = JFactory::getApplication()->input;
 
 $loginlink = $jinput->get('ll', false);
-if($loginlink){
-	list ($adrnr, $password) = explode('-', $loginlink, 2);
-	$lupo_login = ModLupoLoginHelper::clientLogin($adrnr, $password);
+if ($loginlink) {
+    list ($adrnr, $password) = explode('-', $loginlink, 2);
+    $lupo_login = ModLupoLoginHelper::clientLogin($adrnr, $password);
 }
 
 $do_login = $jinput->get('lupo_clientlogin', false);
 if ($do_login == 'login') {
-	$lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false, 'STRING'));
+    $lupo_login = ModLupoLoginHelper::clientLogin($jinput->get('adrnr', false), $jinput->get('password', false, 'STRING'));
 }
 if ($do_login == 'logout') {
-	ModLupoLoginHelper::clientLogout();
+    ModLupoLoginHelper::clientLogout();
 }
 
-$session = JFactory::getSession();
-$client  = $session->get('lupo_client');
+$session      = JFactory::getSession();
+$client       = $session->get('lupo_client');
+$reservations = $session->get('lupo_reservations');
 
 if ($client) {
-	$module->title = $client->firstname . ' ' . $client->lastname;
-	$toylist       = ModLupoLoginHelper::getToys($client->adrnr);
+    $module->title = $client->firstname . ' ' . $client->lastname;
+    $toylist       = ModLupoLoginHelper::getToys($client->adrnr);
 }
 
 //load component parameter
