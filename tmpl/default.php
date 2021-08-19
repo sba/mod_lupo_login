@@ -165,7 +165,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
     if ($reservations) {
         ?>
         <div class="uk-margin-large-top" id="reservations">
-            <h3><?= JText::_('MOD_LUPO_RESERVATIONS') ?>:</h3>
+            <h3><?= JText::_('MOD_LUPO_RESERVATIONS') ?></h3>
             <table class="uk-table uk-table-striped">
                 <tr>
                     <th class="uk-hidden-small"><?php echo JText::_('MOD_LUPO_LOGIN_ARTNR') ?></th>
@@ -179,7 +179,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                         <td class="uk-hidden-small"><?= $reservation->toynr ?></td>
                         <td><?= $reservation->toyname ?></td>
                         <td class="uk-text-right">
-                            <button class="uk-button uk-button-small btn-res-del" data-toynr="<?= $reservation->toynr ?>">Löschen</button>
+                            <button class="uk-button uk-button-small btn-res-del" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE')?></button>
                         </td>
                     </tr>
 
