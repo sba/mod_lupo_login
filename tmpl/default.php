@@ -179,7 +179,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                         <td class="uk-hidden-small"><?= $reservation->toynr ?></td>
                         <td><?= $reservation->toyname ?></td>
                         <td class="uk-text-right">
-                            <button class="uk-button uk-button-small btn-res-del" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE')?></button>
+                            <button class="uk-button uk-button-small btn-res-del" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE') ?></button>
                         </td>
                     </tr>
 
@@ -193,7 +193,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
     <?php
     //reservation
 
-    //load component language strings
+    //load component language strings because we are in mod_lupo_login
     //TODO: refactor language files ... move component strings to module?
     $lang = JFactory::getLanguage();
     $lang->load('com_lupo', JPATH_SITE, 'en-GB', true);
@@ -252,8 +252,6 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                             clientnr: $('#clientnr').val(),
                             resdate: ($('#resnow').prop('checked') ? 'sofort' : $('#resdate').val()),
                             comment: $('#comment').val(),
-                            toynr: '<?php //echo $this->game['number']?>',
-                            toyname: '<?php //echo $this->game['title']?>'
                         }
                     })
                         .done(function (msg) {
@@ -302,20 +300,23 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                     <tr>
                         <td><?php echo JText::_("COM_LUPO_TOY"); ?>:</td>
                         <td class="uk-text-bold">
+                            <ul style="padding-left: 15px;">
                             <?php
                             foreach ($reservations as $reservation) {
+                                echo "<li>";
                                 echo $reservation->toyname;
-                                echo "<br>";
+                                echo "</li>";
                             }
                             ?>
-                            <br>
+                            </ul>
+
                         </td>
                     </tr>
                     <tr>
                         <td><?php echo JText::_("COM_LUPO_RES_CLIENT_NO"); ?>:</td>
-                        <td><input type="text" maxlength="50" size="40" value="<?= $clientnr ?>" id="clientnr"
-                                   name="clientnr"> <span
-                                    class="uk-text-muted"><?php echo JText::_("COM_LUPO_RES_CLIENT_NO_IF_AVAILABLE"); ?></span>
+                        <td>
+                            <input type="text" maxlength="50" size="40" value="<?= $clientnr ?>" id="clientnr" name="clientnr">
+                            <span class="uk-text-muted"><?php echo JText::_("COM_LUPO_RES_CLIENT_NO_IF_AVAILABLE"); ?></span>
                         </td>
                     </tr>
                     <tr>
@@ -325,13 +326,11 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                     </tr>
                     <tr>
                         <td><?php echo JText::_("COM_LUPO_RES_EMAIL"); ?>:*<br></td>
-                        <td><input type="email" required maxlength="100" size="40" value="" id="clientemail"
-                                   name="clientemail"></td>
+                        <td><input type="email" required maxlength="100" size="40" value="" id="clientemail" name="clientemail"></td>
                     </tr>
                     <tr>
                         <td><?php echo JText::_("COM_LUPO_RES_MOBILE"); ?>:*<br></td>
-                        <td><input type="tel" required maxlength="15" size="40" value="" id="clientmobile"
-                                   name="clientmobile"></td>
+                        <td><input type="tel" required maxlength="15" size="40" value="" id="clientmobile" name="clientmobile"></td>
                     </tr>
                     <?php if ($componentParams->get('detail_show_res_date', '1') == 1) { ?>
                         <tr>
@@ -345,12 +344,13 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                                 </div>
                             </td>
                         </tr>
-                    <?php } ?>
                     <tr id="row_resdate">
                         <td></td>
-                        <td><input type="text" maxlength="40" size="40" value="" id="resdate" name="resdate"
-                                   placeholder="<?php echo JText::_("COM_LUPO_RES_FROM_DATE"); ?>"></td>
+                        <td>
+                            <input type="text" maxlength="40" size="40" value="" id="resdate" name="resdate" placeholder="<?php echo JText::_("COM_LUPO_RES_FROM_DATE"); ?>">
+                        </td>
                     </tr>
+                    <?php } ?>
                     <tr>
                         <td><?php echo JText::_("COM_LUPO_RES_ADDITIONAL_INFO"); ?>:</td>
                         <td><textarea rows="10" cols="70" id="comment" name="comment"
@@ -364,11 +364,16 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                             </td>
                         </tr>
                     <?php } ?>
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button id="cancelres" class="uk-button"><?php echo JText::_("JCANCEL"); ?></button>
+                                <button id="submitres" class="uk-button uk-button-primary"><?php echo JText::_("COM_LUPO_RES_SUBMIT"); ?></button>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="uk-modal-footer">
-                    <button id="cancelres" class="uk-button"><?php echo JText::_("JCANCEL"); ?></button>
-                    <button id="submitres" class="uk-button uk-button-primary"><?php echo JText::_("COM_LUPO_RES_SUBMIT"); ?></button>
                     <div id="modal-msg" style="margin-top: 10px"></div>
                 </div>
             </div>
