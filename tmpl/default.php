@@ -158,7 +158,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
     <?php }
 
     if (isset($client) && isset($toylist) && count($toylist) == 0) { ?>
-        <div class="uk-alert">Sie haben zur Zeit keine Spiele ausgeliehen.</div>
+        <div class="uk-alert"><?php echo JText::_('MOD_LUPO_LOGIN_NO_TOYS') ?></div>
     <?php } ?>
 
     <?php
@@ -186,7 +186,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                     <?php
                 } ?>
             </table>
-            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}">Reservation senden</button>
+            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}"><?php echo JText::_('MOD_LUPO_RESERVATIONS_SEND') ?><i class="uk-icon-send"></i></button>
         </div>
 
 
