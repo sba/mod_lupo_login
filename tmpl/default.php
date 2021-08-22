@@ -186,7 +186,7 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                     <?php
                 } ?>
             </table>
-            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}"><?php echo JText::_('MOD_LUPO_RESERVATIONS_SEND') ?><i class="uk-icon-send"></i></button>
+            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}"><?php echo JText::_('MOD_LUPO_RESERVATIONS_SEND') ?> <i class="uk-icon-send"></i></button>
         </div>
 
 
@@ -258,7 +258,8 @@ $componentParams = JComponentHelper::getParams('com_lupo');
                             if (msg == 'ok') {
                                 var modal = UIkit.modal("#resform");
                                 modal.hide();
-                                $('#btnres').after('<div class="uk-alert uk-alert-success"><?php echo JText::_("COM_LUPO_RES_SUBMIT_SUCCESS_MSG"); ?></div>');
+                                $('#lupo_loginlink_reservations').addClass('uk-hidden');
+                                $('#reservations').hide().after('<div class="uk-alert uk-alert-success"><?php echo JText::_("COM_LUPO_RES_SUBMIT_SUCCESS_MSG"); ?></div>');
                             } else {
                                 $('#modal-msg').html('<div class="uk-alert uk-alert-danger">' + msg + '</div>');
                             }
