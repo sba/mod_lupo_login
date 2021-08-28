@@ -14,7 +14,8 @@ new ModLupoLoginHelper();
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 $list            = ModLupoLoginHelper::getToys($params);
 
-$jinput = JFactory::getApplication()->input;
+$app    = JFactory::getApplication('site');
+$jinput = $app->input;
 
 $loginlink = $jinput->get('ll', false);
 if ($loginlink) {
@@ -30,7 +31,8 @@ if ($do_login == 'logout') {
     ModLupoLoginHelper::clientLogout();
 }
 
-$session      = JFactory::getSession();
+//load the correct session
+$session      = $app->getSession();
 $client       = $session->get('lupo_client');
 $reservations = $session->get('lupo_reservations');
 
