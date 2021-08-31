@@ -44,6 +44,9 @@ $componentParams = JComponentHelper::getParams('com_lupo');
         echo $module->content;
     } ?>
 
+    <?php
+    if($componentParams->get('detail_show_toy_res_hide_login', '0')==0) { ?>
+
     <form method="post" action="<?= JURI::current() ?>" class="uk-form">
         <div class="uk-grid uk-form-row" data-uk-grid-margin>
             <?php
@@ -159,6 +162,8 @@ $componentParams = JComponentHelper::getParams('com_lupo');
 
     if (isset($client) && isset($toylist) && count($toylist) == 0) { ?>
         <div class="uk-alert"><?php echo JText::_('MOD_LUPO_LOGIN_NO_TOYS') ?></div>
+    <?php } ?>
+
     <?php } ?>
 
     <?php
