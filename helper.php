@@ -45,13 +45,26 @@ class ModLupoLoginHelper
 	{
 		$model = new LupoModelLupoClient();
 		$model->clientLogout();
-		return;
 	}
-	
+
+	/**
+	 * send password and username to email
+	 */
+	public static function sendPassword($email) {
+		$model = new LupoModelLupoClient();
+		$res = $model->getClientByEmail($email);
+
+		if($res) {
+			return "sent";
+		} else {
+			return "notfound";
+		}
+	}
+
 	/**
 	 * Retrieve list of borrowed toys
-	 * 
-	 * @param $adrnr 
+	 *
+	 * @param $adrnr
 	 *
 	 * @return  mixed
 	 */
@@ -59,7 +72,7 @@ class ModLupoLoginHelper
 	{
 		$model = new LupoModelLupoClient();
 		$toylist = $model->getClientToys($adrnr);
-		
+
 		return $toylist;
 	}
 }

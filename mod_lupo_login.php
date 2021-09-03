@@ -31,6 +31,12 @@ if ($do_login == 'logout') {
     ModLupoLoginHelper::clientLogout();
 }
 
+$password_sent = null;
+if($jinput->get('password-reset', false)) {
+	$email = $jinput->get('email', false, 'string');
+	$password_sent = ModLupoLoginHelper::sendPassword($email);
+}
+
 //load the correct session
 $session      = $app->getSession();
 $client       = $session->get('lupo_client');
