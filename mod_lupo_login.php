@@ -37,6 +37,8 @@ if($jinput->get('password-reset', false)) {
 	$password_sent = ModLupoLoginHelper::sendPassword($email);
 }
 
+$password_reset_enabled=ModLupoLoginHelper::hasEmails();
+
 //load the correct session
 $session      = $app->getSession();
 $client       = $session->get('lupo_client');

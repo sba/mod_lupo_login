@@ -74,7 +74,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                         <div class="uk-width-2-3"><?php echo JText::_('MOD_LUPO_LOGIN_ABO_VALID_UNTIL') ?><b>: <?php echo date("d.m.Y", strtotime($client->aboenddat)) ?></b> (<?php echo $client->abotype ?>)</div>
 					<?php } ?>
                     <div class="uk-width-1-<?= $hasAbo ? '3' : '1' ?>">
-                        <button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?>" class="uk-button uk-button-primary uk-float-right"><?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?></button>
+                        <button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?>" class="uk-button uk-button-primary uk-float-right"><i class="uk-icon-sign-out"></i> <?php echo JText::_('MOD_LUPO_LOGIN_LOGOUT') ?></button>
                     </div>
                 </div>
             </form>
@@ -94,10 +94,11 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                     <div class="uk-width-1-1 uk-width-small-1-3"><input type="text" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_ADRNR') ?>" size="10" name="adrnr" class="uk-width-1-1" required></div>
                     <div class="uk-width-1-1 uk-width-small-1-3"><input type="password" placeholder="<?php echo JText::_('MOD_LUPO_LOGIN_PASSWORD') ?>" size="10" name="password" class="uk-width-1-1" required></div>
                     <div class="uk-width-1-1 uk-width-small-1-3">
-                        <button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?>" class="uk-button uk-button-primary"><?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?></button>
+                        <button type="submit" name="Submit" value="<?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?>" class="uk-button uk-button-primary"><i class="uk-icon-sign-in"></i> <?php echo JText::_('MOD_LUPO_LOGIN_LOGIN') ?></button>
                     </div>
                 </div>
             </form>
+            <?php if($password_reset_enabled){?>
             <div class="uk-width-1-1 uk-margin">
                 <a href="#" class="link-password-reset"><?php echo JText::_('MOD_LUPO_LOGIN_RESET') ?></a>
             </div>
@@ -112,17 +113,23 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                 </div>
             </form>
             <?php
-			if($password_sent=='sent'){
+			if($password_sent=='mail_sent'){
 				?>
-                <div class="uk-alert uk-alert-success">Password sent</div>
+                <div class="uk-alert uk-alert-success">Es wurde eine E-Mail mit den Zugangsdaten gesendet.</div>
 				<?php
 			}
-			if($password_sent=='notfound'){
+			if($password_sent=='mail_error'){
 				?>
-                <div class="uk-alert uk-alert-danger">ERROR</div>
+                <div class="uk-alert uk-alert-success">Fehler: Die E-Mail konnte nicht versendet werden.</div>
+				<?php
+			}
+			if($password_sent=='not_found'){
+				?>
+                <div class="uk-alert uk-alert-danger">Fehler: E-Mailadresse unbekannt.</div>
 				<?php
 			}
             ?>
+            <?php } ?>
 
             <style>
                 .lupo_show_logoff {
