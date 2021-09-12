@@ -57,9 +57,8 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 	} ?>
 
 	<?php
-	if ($componentParams->get('detail_show_toy_res_hide_login', '0') == 0) { ?>
-
-
+    $show_login = $componentParams->get('detail_show_toy_res_hide_login', '0') == 0;
+	if ($show_login) { ?>
 		<?php
 		$session = JFactory::getSession();
 		$client  = $session->get('lupo_client');
@@ -224,7 +223,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 	<?php
 	if ($reservations) {
 		?>
-        <div class="uk-margin-large-top" id="reservations">
+        <div class="<?=$show_login?'uk-margin-large-top':''?>" id="reservations">
             <h3><?= JText::_('MOD_LUPO_RESERVATIONS') ?></h3>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -271,9 +270,9 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                             response = JSON.parse(response);
                             if (response.msg == 'ok') {
                                 if (response.reservations_nbr == 0) {
-                                    $('#lupo_loginlink_reservations, #reservations').addClass('uk-hidden');
+                                    $('.lupo_loginlink_reservations, #reservations').addClass('uk-hidden');
                                 } else {
-                                    $('#lupo_loginlink_reservations span').html(response.reservations_nbr);
+                                    $('#lupo_loginlink_reservations_nbr').html(response.reservations_nbr);
                                 }
                                 $button.parent().parent().remove();
                             } else {
@@ -313,7 +312,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                             if (msg == 'ok') {
                                 var modal = UIkit.modal("#resform");
                                 modal.hide();
-                                $('#lupo_loginlink_reservations').addClass('uk-hidden');
+                                $('.lupo_loginlink_reservations').addClass('uk-hidden');
                                 $('#reservations').hide().after('<div class="uk-alert uk-alert-success"><?php echo JText::_("COM_LUPO_RES_SUBMIT_SUCCESS_MSG"); ?></div>');
                             } else {
                                 $('#modal-msg').html('<div class="uk-alert uk-alert-danger">' + msg + '</div>');

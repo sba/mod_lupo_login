@@ -60,13 +60,13 @@ class ModLupoLoginHelper {
 				$subject = JText::_('MOD_LUPO_LOGIN_RESET_EMAIL_SUBJECT');
 				$subject = sprintf($subject, $config->get('sitename'));
 				$body    = JText::_('MOD_LUPO_LOGIN_ADRNR') . ': ' . $res->adrnr . "\n";
-				$body    .= JText::_('MOD_LUPO_LOGIN_PASSWORD') . ': ' . $res->username."\n\n";
+				$body    .= JText::_('MOD_LUPO_LOGIN_PASSWORD') . ': ' . $res->username . "\n\n";
 
-				$module = JModuleHelper::getModule('mod_lupo_loginlink');
-				$params = new JRegistry($module->params);
+				$module        = JModuleHelper::getModule('mod_lupo_loginlink');
+				$params        = new JRegistry($module->params);
 				$loginlink_url = $params->get('loginlink_url');
 
-				$body    .= JURI::base().$loginlink_url. "?ll=" . $res->adrnr . "-" . $res->username."\n";
+				$body .= JURI::base() . $loginlink_url . "?ll=" . $res->adrnr . "-" . $res->username . "\n";
 				$mailer->setSubject($subject);
 				$mailer->setBody($body);
 
@@ -114,6 +114,6 @@ class ModLupoLoginHelper {
 		$db->setQuery($query);
 		$numRows = $db->loadObject();
 
-		return $numRows!==null;
+		return $numRows !== null;
 	}
 }
