@@ -175,7 +175,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 								}
 							}
 
-							$extended_date_over = $toy->return_date_extended <= date("Y-m-d");
+							$extended_date_over = $toy->return_date_extended < date("Y-m-d");
 
 							if ($toy->prolongable == 0 || $has_reservation || $extended_date_over) {
 								$html_prolongation = '<i class="uk-text-muted">' . JText::_('MOD_LUPO_LOGIN_NOT_PROLONGABLE') . '</i>';
@@ -198,7 +198,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                         <td class="retour-date">
 							<?= date('d.m.Y', strtotime($toy->return_date)) ?>
 							<?php
-							if ($toy->return_date <= date('Y-m-d')) {
+							if ($toy->return_date < date('Y-m-d')) {
 								?>
                                 <i class="uk-icon-exclamation red"></i>
 							<?php } ?>
