@@ -232,13 +232,14 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                     <th></th>
                 </tr>
 				<?php
+                $i=0;
 				foreach ($reservations as $reservation) {
-					?>
+                    ?>
                     <tr>
                         <td class="uk-hidden-small"><?= $reservation->toynr ?></td>
                         <td><?= $reservation->toyname ?></td>
                         <td class="uk-text-right">
-                            <button class="uk-button uk-button-small btn-res-del" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE') ?></button>
+                            <button class="uk-button uk-button-small btn-res-del" data-toyitem="<?=$i++?>" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE') ?></button>
                         </td>
                     </tr>
 
@@ -275,6 +276,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                                     $('#lupo_loginlink_reservations_nbr').html(response.reservations_nbr);
                                 }
                                 $button.parent().parent().remove();
+                                $('#formtoyitem'+$button.data('toyitem')).remove(); //remove from list in form
                             } else {
                                 $button.html('<i class="uk-icon-exclamation-circle red"></i> ERROR');
                             }
@@ -357,8 +359,9 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                         <td class="uk-text-bold">
                             <ul style="padding-left: 15px;">
 								<?php
+                                $i=0;
 								foreach ($reservations as $reservation) {
-									echo "<li>";
+									echo '<li id="formtoyitem'.$i++.'">';
 									echo $reservation->toyname;
 									echo "</li>";
 								}
