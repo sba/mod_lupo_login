@@ -246,7 +246,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 					<?php
 				} ?>
             </table>
-            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}"><?php echo JText::_('MOD_LUPO_RESERVATIONS_SEND') ?> <i class="uk-icon-send"></i></button>
+            <button class="uk-button uk-button-primary uk-align-right" data-uk-modal="{target:'#resform'}"><?php echo JText::_('JNEXT') ?> <i class="uk-icon-arrow-right"></i></button>
         </div>
 
 
@@ -426,7 +426,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                         <td></td>
                         <td>
                             <button id="cancelres" class="uk-button"><?php echo JText::_("JCANCEL"); ?></button>
-                            <button id="submitres" class="uk-button uk-button-primary"><?php echo JText::_("COM_LUPO_RES_SUBMIT"); ?></button>
+                            <button id="submitres" class="uk-button uk-button-primary"><?php echo JText::_('MOD_LUPO_RESERVATIONS_SEND') ?> <i class="uk-icon-send"></i></button>
                         </td>
                     </tr>
                     </tbody>
