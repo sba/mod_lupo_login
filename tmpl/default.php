@@ -57,7 +57,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 	} ?>
 
 	<?php
-    $show_login = $componentParams->get('detail_show_toy_res_hide_login', '0') == 0;
+	$show_login = $componentParams->get('detail_show_toy_res_hide_login', '0') == 0;
 	if ($show_login) { ?>
 		<?php
 		$session = JFactory::getSession();
@@ -97,38 +97,38 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                     </div>
                 </div>
             </form>
-            <?php if($password_reset_enabled){?>
-            <div class="uk-width-1-1 uk-margin">
-                <a href="#" class="link-password-reset"><?php echo JText::_('MOD_LUPO_LOGIN_RESET') ?></a>
-            </div>
-            <form method="post" action="<?= JURI::current() ?>" class="uk-form">
-                <div class="uk-grid uk-form-row" data-uk-grid-margin>
-                    <div class="uk-width-1-1 uk-width-small-2-3 form-password-reset" style="display: none">
-                        <input type="email" placeholder="<?php echo JText::_('COM_LUPO_RES_EMAIL') ?>" name="email" class="uk-width-1-1" required>
-                    </div>
-                    <div class="uk-width-1-1 uk-width-small-1-3 form-password-reset" style="display: none">
-                        <button type="submit" name="password-reset" value="password-reset" class="uk-button uk-button-primary"><?php echo JText::_('COM_LUPO_RES_SUBMIT') ?></button>
-                    </div>
+			<?php if ($password_reset_enabled) { ?>
+                <div class="uk-width-1-1 uk-margin">
+                    <a href="#" class="link-password-reset"><?php echo JText::_('MOD_LUPO_LOGIN_RESET') ?></a>
                 </div>
-            </form>
-            <?php
-			if($password_sent=='mail_sent'){
-				?>
-                <div class="uk-alert uk-alert-success">Es wurde eine E-Mail mit den Zugangsdaten gesendet.</div>
+                <form method="post" action="<?= JURI::current() ?>" class="uk-form">
+                    <div class="uk-grid uk-form-row" data-uk-grid-margin>
+                        <div class="uk-width-1-1 uk-width-small-2-3 form-password-reset" style="display: none">
+                            <input type="email" placeholder="<?php echo JText::_('COM_LUPO_RES_EMAIL') ?>" name="email" class="uk-width-1-1" required>
+                        </div>
+                        <div class="uk-width-1-1 uk-width-small-1-3 form-password-reset" style="display: none">
+                            <button type="submit" name="password-reset" value="password-reset" class="uk-button uk-button-primary"><?php echo JText::_('COM_LUPO_RES_SUBMIT') ?></button>
+                        </div>
+                    </div>
+                </form>
 				<?php
-			}
-			if($password_sent=='mail_error'){
+				if ($password_sent == 'mail_sent') {
+					?>
+                    <div class="uk-alert uk-alert-success">Es wurde eine E-Mail mit den Zugangsdaten gesendet.</div>
+					<?php
+				}
+				if ($password_sent == 'mail_error') {
+					?>
+                    <div class="uk-alert uk-alert-success">Fehler: Die E-Mail konnte nicht versendet werden.</div>
+					<?php
+				}
+				if ($password_sent == 'not_found') {
+					?>
+                    <div class="uk-alert uk-alert-danger">Fehler: E-Mailadresse unbekannt.</div>
+					<?php
+				}
 				?>
-                <div class="uk-alert uk-alert-success">Fehler: Die E-Mail konnte nicht versendet werden.</div>
-				<?php
-			}
-			if($password_sent=='not_found'){
-				?>
-                <div class="uk-alert uk-alert-danger">Fehler: E-Mailadresse unbekannt.</div>
-				<?php
-			}
-            ?>
-            <?php } ?>
+			<?php } ?>
 
             <style>
                 .lupo_show_logoff {
@@ -223,7 +223,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
 	<?php
 	if ($reservations) {
 		?>
-        <div class="<?=$show_login?'uk-margin-large-top':''?>" id="reservations">
+        <div class="<?= $show_login ? 'uk-margin-large-top' : '' ?>" id="reservations">
             <h3><?= JText::_('MOD_LUPO_RESERVATIONS') ?></h3>
             <table class="uk-table uk-table-striped">
                 <tr>
@@ -232,14 +232,14 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                     <th></th>
                 </tr>
 				<?php
-                $i=0;
+				$i = 0;
 				foreach ($reservations as $reservation) {
-                    ?>
+					?>
                     <tr>
                         <td class="uk-hidden-small"><?= $reservation->toynr ?></td>
                         <td><?= $reservation->toyname ?></td>
                         <td class="uk-text-right">
-                            <button class="uk-button uk-button-small btn-res-del" data-toyitem="<?=$i++?>" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE') ?></button>
+                            <button class="uk-button uk-button-small btn-res-del" data-toyitem="<?= $i++ ?>" data-toynr="<?= $reservation->toynr ?>"><?php echo JText::_('JACTION_DELETE') ?></button>
                         </td>
                     </tr>
 
@@ -276,7 +276,7 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                                     $('#lupo_loginlink_reservations_nbr').html(response.reservations_nbr);
                                 }
                                 $button.parent().parent().remove();
-                                $('#formtoyitem'+$button.data('toyitem')).remove(); //remove from list in form
+                                $('#formtoyitem' + $button.data('toyitem')).remove(); //remove from list in form
                             } else {
                                 $button.html('<i class="uk-icon-exclamation-circle red"></i> ERROR');
                             }
@@ -359,9 +359,9 @@ $lang->load('com_lupo', JPATH_SITE, $lang->getTag(), true);
                         <td class="uk-text-bold">
                             <ul style="padding-left: 15px;">
 								<?php
-                                $i=0;
+								$i = 0;
 								foreach ($reservations as $reservation) {
-									echo '<li id="formtoyitem'.$i++.'">';
+									echo '<li id="formtoyitem' . $i++ . '">';
 									echo $reservation->toyname;
 									echo "</li>";
 								}
